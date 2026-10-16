@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Chess Arena — New game</title>
+<link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+<header class="topbar">
+  <span class="brand">♞ AI Chess Arena</span>
+  <nav><a href="/">Live</a><a href="/setup" class="active">New game</a><a href="/replay">Replay</a><a href="/record">Record</a></nav>
+</header>
+<main>
+  <form id="form" class="setup panel">
+    <h2 style="margin:0">New game</h2>
+    <div id="running" class="banner warn hidden">A game is already running. <a href="/">Watch it</a> or abort it first.</div>
+    <div class="row">
+      <div class="field"><span><span class="piece-icon white" style="display:inline-grid;width:22px;height:22px;font-size:16px;vertical-align:middle">♔</span> White</span>
+        <div class="picker" id="white"></div></div>
+      <button type="button" id="swap" title="Swap colors" style="align-self:center">⇄</button>
+      <div class="field"><span><span class="piece-icon black" style="display:inline-grid;width:22px;height:22px;font-size:16px;vertical-align:middle">♚</span> Black</span>
+        <div class="picker" id="black"></div></div>
+    </div>
+    <label><input type="checkbox" id="legal"> Send the list of legal moves to the agents <span class="help">(“assisted” games are tracked separately in the record)</span></label>
+    <label><input type="checkbox" id="think"> Think aloud: ask both agents for a short ANALYSIS (candidate moves, threats, why) before each move
+      <span class="help">(changes the game conditions: more output tokens, possibly different play; filterable in the record)</span></label>
+    <div class="row">
+      <label class="field">Opening
+        <select id="opening"></select>
+        <span class="help" id="opening-help">White's agent chooses its own first move and the game develops freely.</span></label>
+    </div>
+    <label class="field hidden" id="custom-wrap">Custom opening moves (SAN, both sides)
+      <input type="text" id="opening-moves" placeholder="1. e4 c5 2. Nf3 d6"></label>
+    <label class="field" style="max-width:260px">Move cap (plies)
+      <input type="number" id="cap" min="2" max="2000"><span class="help">The game is drawn when this many plies have been played.</span></label>
+    <details><summary class="muted">Advanced: start from a position</summary>
+      <label class="field" style="margin-top:8px">Start FEN <span class="help">Leave empty for the normal starting position.</span>
+        <input type="text" id="fen" placeholder="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"></label></details>
+    <div class="row"><button class="primary" id="start" type="submit">Start game</button><span id="err" class="error"></span></div>
+  </form>
+</main>
+<script type="module" src="/static/js/setup.js"></script>
+</body>
+</html>

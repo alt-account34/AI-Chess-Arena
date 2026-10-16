@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Chess Arena — Live</title>
+<link rel="stylesheet" href="/static/vendor/chessground.base.css">
+<link rel="stylesheet" href="/static/vendor/chessground.brown.css">
+<link rel="stylesheet" href="/static/vendor/chessground.cburnett.css">
+<link rel="stylesheet" href="/static/css/app.css">
+<script src="/static/vendor/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <span class="brand">♞ AI Chess Arena</span>
+  <nav><a href="/" class="active">Live</a><a href="/setup">New game</a><a href="/replay">Replay</a><a href="/record">Record</a></nav>
+  <span class="spacer"></span><span id="conn" class="conn down">connecting</span>
+</header>
+<main>
+  <div id="empty" class="panel hidden">
+    <h3>No game</h3>
+    <p>No game has been started since the server came up. <a href="/setup">Start a new game</a> or <a href="/replay">replay a past one</a>.</p>
+  </div>
+
+  <div id="banner-end" class="banner end hidden"><div class="grow" id="end-text"></div>
+    <button id="btn-show-resign" class="hidden">Show resignation</button>
+    <a id="end-replay" href="#"><button>Open in replay</button></a>
+    <a href="/setup"><button class="primary">New game</button></a></div>
+  <div id="banner-unresp" class="banner bad hidden"><div class="grow"><strong>Agent unresponsive</strong>
+    <div id="unresp-text" class="muted"></div></div>
+    <button id="btn-retry" class="primary">Retry</button><button id="btn-abort2" class="danger">Abort</button></div>
+  <div id="banner-pause" class="banner warn hidden"><div class="grow" id="pause-text"></div></div>
+
+  <div id="game" class="game hidden">
+    <div class="board-col">
+      <div id="player-top"></div>
+      <div class="board-row">
+        <div id="evalbar"></div>
+        <div class="board-wrap"><div id="board"></div></div>
+      </div>
+      <div id="player-bottom"></div>
+    </div>
+    <div class="side-col">
+      <div class="panel">
+        <div class="turn">
+          <div id="turn-icon" class="piece-icon white">♔</div>
+          <div class="what"><div id="turn-big" class="big"></div><div id="turn-sub" class="muted"></div></div>
+          <div id="turn-timer" class="timer"></div>
+        </div>
+        <div class="controls">
+          <button id="btn-pause">Pause</button>
+          <button id="btn-resume" class="hidden primary">Resume</button>
+          <button id="btn-resign" class="danger hidden" title="resign as the human player">Resign</button>
+          <button id="btn-abort" class="danger">Abort</button>
+          <span class="muted" id="settings-line" style="align-self:center;font-size:12px"></span>
+        </div>
+      </div>
+      <div class="panel"><h3>Agent consoles</h3><div id="consoles"></div></div>
+      <div class="panel"><h3>Evaluation <span id="engine-name" class="muted" style="text-transform:none;letter-spacing:0"></span></h3>
+        <div class="chart-wrap"><canvas id="chart"></canvas></div></div>
+      <div class="panel"><h3>Moves</h3><div id="moves" class="moves"></div></div>
+      <div class="panel"><h3>Referee log</h3><div id="events" class="events"></div></div>
+    </div>
+  </div>
+</main>
+<script type="module" src="/static/js/live.js"></script>
+</body>
+</html>

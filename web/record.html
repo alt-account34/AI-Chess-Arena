@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Chess Arena — Record</title>
+<link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+<header class="topbar">
+  <span class="brand">♞ AI Chess Arena</span>
+  <nav><a href="/">Live</a><a href="/setup">New game</a><a href="/replay">Replay</a><a href="/record" class="active">Record</a></nav>
+</header>
+<main style="display:flex;flex-direction:column;gap:14px">
+  <div style="display:flex;align-items:center;gap:12px">
+    <h2 style="margin:0;flex:1">Win / loss record</h2>
+    <label class="muted">Legal moves sent:
+      <select id="filter"><option value="off">off (unassisted)</option><option value="on">on (assisted)</option><option value="all">all games</option></select></label>
+    <label class="muted">Think aloud:
+      <select id="filter-ta"><option value="all">all games</option><option value="off">off</option><option value="on">on</option></select></label>
+  </div>
+  <section class="panel">
+    <h3>By agent setup</h3>
+    <div style="overflow-x:auto"><table class="data" id="agents"></table></div>
+    <p class="muted" style="font-size:12px;margin:8px 0 0">Aborted or errored games are not counted as wins, losses or draws (they appear under “unfinished”).
+      A forfeit (3 illegal attempts in a row) counts as a loss.</p>
+  </section>
+  <section class="panel">
+    <h3>By matchup (split by color)</h3>
+    <div style="overflow-x:auto"><table class="data" id="matchups"></table></div>
+  </section>
+</main>
+<script type="module" src="/static/js/record.js"></script>
+</body>
+</html>

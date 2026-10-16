@@ -1,0 +1,31 @@
+# AI Chess Arena settings. Relative paths are relative to this folder.
+host: 127.0.0.1
+port: 8000
+open_browser: true
+
+# Game defaults (the setup page can change the first two per game)
+send_legal_moves: false     # send the list of legal moves in every prompt ("assisted" games)
+move_cap_plies: 200         # the game is drawn after this many plies
+max_illegal_streak: 3       # this many rejected attempts in a row = forfeit
+safety_timeout_s: 1200      # not a penalty: pause and ask Retry/Abort if an agent takes this long
+
+# Storage
+games_dir: games
+db_path: arena.db
+
+# Stockfish (UI and logs only; never shown to agents)
+stockfish_path: tools/stockfish/stockfish.exe
+# Tuned with `python -m arena bench-engine` on this PC (Core Ultra 7 155H), 2026-10-15:
+# 5 threads / 384 MB / 1.6 s gave the same move classification as a 6 s, 12-thread search
+# 90% of the time (99% within one label). Results are in SETUP.md, section 2.
+engine_time_s: 1.6          # per position; ignored if engine_depth is set
+engine_depth: null
+engine_threads: 5
+engine_hash_mb: 384
+engine_multipv: 3           # top lines per position, used by the move classifier
+
+# CLI locations. null = find them on PATH (npm .cmd shims are resolved to the real program)
+claude_path: null
+codex_path: null
+# Parent of the per-agent empty working folders. null = %TEMP%\ai-chess-arena
+agent_temp_root: null

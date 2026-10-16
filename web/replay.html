@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Chess Arena — Replay</title>
+<link rel="stylesheet" href="/static/vendor/chessground.base.css">
+<link rel="stylesheet" href="/static/vendor/chessground.brown.css">
+<link rel="stylesheet" href="/static/vendor/chessground.cburnett.css">
+<link rel="stylesheet" href="/static/css/app.css">
+<script src="/static/vendor/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <span class="brand">♞ AI Chess Arena</span>
+  <nav><a href="/">Live</a><a href="/setup">New game</a><a href="/replay" class="active">Replay</a><a href="/record">Record</a></nav>
+</header>
+<main>
+  <section id="list" class="panel hidden">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+      <h3 style="margin:0;flex:1">Past games</h3>
+      <label class="muted">Legal moves sent:
+        <select id="filter"><option value="all">all</option><option value="off">off</option><option value="on">on (assisted)</option></select></label>
+      <label class="muted">Think aloud:
+        <select id="filter-ta"><option value="all">all</option><option value="off">off</option><option value="on">on</option></select></label>
+    </div>
+    <table class="data"><thead><tr><th>Date</th><th>White</th><th>Black</th><th>Result</th><th>Reason</th><th class="n">Plies</th><th>Opening</th><th>Mode</th></tr></thead>
+      <tbody id="games"></tbody></table>
+    <div id="none" class="muted hidden" style="padding:10px">No saved games yet.</div>
+  </section>
+
+  <section id="viewer" class="hidden">
+    <div class="banner end" id="banner"><div class="grow" id="end-text"></div>
+      <button id="btn-resign" class="hidden">Show resignation</button>
+      <a id="pgn-link" href="#"><button>Download PGN</button></a>
+      <a href="/replay"><button>All games</button></a></div>
+    <div class="game">
+      <div class="board-col">
+        <div id="player-top"></div>
+        <div class="board-row"><div id="evalbar"></div><div class="board-wrap"><div id="board"></div></div></div>
+        <div id="player-bottom"></div>
+        <div class="panel player-controls" id="nav">
+          <button data-a="first" title="Start (Home)">⏮</button><button data-a="prev" title="Back (←)">◀</button>
+          <span id="pos" class="muted" style="min-width:120px;text-align:center"></span>
+          <button data-a="next" title="Forward (→)">▶</button><button data-a="last" title="End (End)">⏭</button>
+          <button data-a="play" title="Autoplay (space)">▶ Play</button>
+        </div>
+      </div>
+      <div class="side-col">
+        <div class="panel"><h3>Game</h3><div id="meta" class="muted"></div></div>
+        <div class="panel"><h3>Agent consoles</h3><div id="consoles"></div></div>
+        <div class="panel"><h3>Evaluation <span id="eval-now" style="text-transform:none"></span></h3>
+          <div class="chart-wrap"><canvas id="chart"></canvas></div></div>
+        <div class="panel"><h3>Moves</h3><div id="moves" class="moves"></div></div>
+        <div class="panel"><h3>Referee log</h3><div id="events" class="events"></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+<script type="module" src="/static/js/replay.js"></script>
+</body>
+</html>

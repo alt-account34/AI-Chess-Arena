@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# Game results / history — never published (per project policy)
+games/
+arena.db
+arena.db-*
+*.json.bak
+
+# Stockfish binaries — large, licensed separately, user downloads their own copy
+tools/stockfish/
+
+# Local overrides
+*.local.yaml
+.env

@@ -1,0 +1,69 @@
+# Agent setups. Pick any two (or the same one twice) on the setup page.
+#
+# families: one agent per effort level, with id "<id_prefix>-<effort>" and display
+# name "<name> (<effort>)". Fields:
+#   id_prefix, name   used to build the agent id and display name
+#   group             heading in the setup page's model picker
+#   cli               claude_code | codex
+#   model             passed verbatim to the CLI's --model / -m flag
+#   efforts           passed verbatim (Claude: --effort, Codex: -c model_reasoning_effort=...)
+#
+# agents: single entries. Fields: id, display_name, cli (claude_code | codex | mock | human),
+# model, reasoning_effort, group. Mock-only fields: script (list of actions, see
+# arena/agents/mock.py), delay_s, seed.
+families:
+  # ---- Claude Code (efforts: low | medium | high | xhigh | max)
+  - {id_prefix: fable-5.1, name: "Fable 5.1", group: Claude, cli: claude_code, model: claude-fable-5-1,
+     efforts: [low, medium, high, xhigh, max]}
+  - {id_prefix: opus-5.5, name: "Opus 5.5", group: Claude, cli: claude_code, model: claude-opus-5-5,
+     efforts: [low, medium, high, xhigh, max]}
+  - {id_prefix: sonnet-5, name: "Sonnet 5", group: Claude, cli: claude_code, model: claude-sonnet-5,
+     efforts: [low, medium, high, xhigh, max]}
+  - {id_prefix: haiku-4.5, name: "Haiku 4.5", group: Claude, cli: claude_code, model: claude-haiku-4-5-20251001,
+     efforts: [low, medium, high, xhigh, max]}
+
+  # ---- Codex (efforts: low | medium | high | xhigh | max)
+  - {id_prefix: gpt-6.1-sol, name: "GPT-6.1 Sol", group: Codex, cli: codex, model: gpt-6.1-sol,
+     efforts: [low, medium, high, xhigh, max]}
+  - {id_prefix: gpt-6-sol, name: "GPT-6 Sol", group: Codex, cli: codex, model: gpt-6-sol,
+     efforts: [low, medium, high, xhigh, max]}
+  - {id_prefix: astra, name: "Astra", group: Codex, cli: codex, model: gpt-6-astra,
+     efforts: [low, medium, high, xhigh, max]}
+  - {id_prefix: gpt-6-luna, name: "GPT-6 Luna", group: Codex, cli: codex, model: gpt-6-luna,
+     efforts: [low, medium, high, xhigh, max]}
+  - {id_prefix: gpt-5.6-sol, name: "GPT-5.6 Sol", group: Codex, cli: codex, model: gpt-5.6-sol,
+     efforts: [low, medium, high, xhigh, max]}
+  - {id_prefix: gpt-5.6-terra, name: "GPT-5.6 Terra", group: Codex, cli: codex, model: gpt-5.6-terra,
+     efforts: [low, medium, high, xhigh, max]}
+  - {id_prefix: gpt-5.6-luna, name: "GPT-5.6 Luna", group: Codex, cli: codex, model: gpt-5.6-luna,
+     efforts: [low, medium, high, xhigh, max]}
+
+agents:
+  # ---- A person playing on the board in the browser
+  - id: human
+    display_name: "Player (you)"
+    cli: human
+    group: Human
+
+  # ---- Mock agents (no CLI, for testing)
+  - id: mock-random
+    display_name: "Mock (random legal)"
+    cli: mock
+    group: Mock
+    delay_s: 0.4
+
+  - id: mock-bad
+    display_name: "Mock (scripted bad)"
+    cli: mock
+    group: Mock
+    delay_s: 0.4
+    # garbage -> illegal -> bad resignation, each followed by a legal move,
+    # then a few random moves and a valid resignation.
+    script: [garbage, random, illegal, random, bad_resign, random, random, random, resign]
+
+  - id: mock-forfeit
+    display_name: "Mock (forfeits)"
+    cli: mock
+    group: Mock
+    delay_s: 0.4
+    script: [random, illegal, garbage, illegal]

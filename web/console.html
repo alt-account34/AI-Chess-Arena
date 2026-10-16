@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent console</title>
+<link rel="stylesheet" href="/static/css/app.css">
+<style>
+  body { background: #111214; color: #e6e3dc; }
+  .cbar { position: sticky; top: 0; z-index: 2; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+    padding: 8px 14px; background: #1b1c1f; border-bottom: 1px solid #2c2d31; }
+  .cbar .who { font-weight: 700; }
+  .cbar label { font-size: 12px; color: #a39d93; display: flex; gap: 4px; align-items: center; }
+  .cbar .spacer { flex: 1; }
+  #log { font: 13px/1.5 var(--mono); padding: 10px 14px 60px; }
+  .ev { display: flex; gap: 10px; margin: 2px 0; }
+  .ev .ts { color: #6b675f; flex: none; }
+  .ev .body { flex: 1; min-width: 0; white-space: pre-wrap; word-break: break-word; }
+  .turn { margin: 18px 0 6px; padding: 4px 8px; background: #23252a; border-left: 3px solid #6c9fd8; font-weight: 700; }
+  .prompt summary { cursor: pointer; color: #6cc3c3; }
+  .prompt pre { background: #17181b; border-color: #2c2d31; color: #a39d93; max-height: 340px; }
+  .thinking { color: #c49bea; }
+  .reasoning { color: #c49bea; border-left: 2px solid #8a63b5; padding-left: 8px; }
+  .reply { border-left: 2px solid #e6e3dc; padding-left: 8px; }
+  .reply.streaming::after { content: "▍"; animation: blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .ok { color: #6cc38a; } .bad { color: #e07070; } .warn { color: #e0a24a; } .dim { color: #6b675f; }
+  .raw { color: #5d5a54; font-size: 11px; }
+  body.hide-raw .raw-ev { display: none; }
+  body.hide-prompts .prompt-ev { display: none; }
+  .empty { color: #6b675f; padding: 30px 0; }
+</style>
+</head>
+<body class="hide-raw">
+<div class="cbar">
+  <span id="icon" class="piece-icon white" style="width:24px;height:24px;font-size:17px">♔</span>
+  <span class="who" id="who">Agent console</span>
+  <span class="dim" id="sub"></span>
+  <span class="spacer"></span>
+  <label><input type="checkbox" id="opt-scroll" checked> auto-scroll</label>
+  <label><input type="checkbox" id="opt-prompts" checked> prompts</label>
+  <label><input type="checkbox" id="opt-raw"> raw JSON</label>
+  <span id="conn" class="conn down">connecting</span>
+</div>
+<div id="log"><div class="empty">Waiting for the agent…</div></div>
+<script type="module" src="/static/js/console.js"></script>
+</body>
+</html>
