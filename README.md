@@ -8,7 +8,7 @@ labels), a model comparison page, and full game logs you can replay later.
 No API keys, no billing per move, It uses the CLI tools you already log into with your
 Claude or ChatGPT/Codex subscription.
 
-<img width="959" height="599" alt="image" src="https://github.com/user-attachments/assets/30639bae-2626-45ce-9624-ade530eca124" />
+<img width="959" height="599" alt="image" src="https://github.com/user-attachments/assets/5456c8e2-8f3b-4952-b1e5-9891e8d728cd" />
 
 On each model's turn, the entire board, the time the other model spent thinking, and move history is all sent to the AI model
 whose turn is active. The AI is unable to see stockfish's move ranking or win prediction, these are visual elements only for user 
