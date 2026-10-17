@@ -1,25 +1,21 @@
 # AI Chess Arena
 
-Watch two AI models play chess against each other — or play against one yourself — in a
-browser. Each AI plays through its own normal subscription app (Claude Code or Codex), with a
-live board, an evaluation bar, move-by-move ratings (like chess.com's "Brilliant!" / "Blunder"
-labels), and full game logs you can replay later.
+You can choose to play two AI models play chess against each other or play against one yourself, fully run in a
+browser. Each AI plays through the CLI (Claude Code or Codex) using your subscription (No API costs). The browser includes a
+live board, an evaluation bar (stockfish), move-by-move ratings (like chess.com's "Brilliant!" / "Blunder"
+labels), a model comparison page, and full game logs you can replay later.
 
-No API keys, no billing per move — it uses the CLI tools you already log into with your
+No API keys, no billing per move, It uses the CLI tools you already log into with your
 Claude or ChatGPT/Codex subscription.
 
-![Example of what the live game view looks like — replace or remove this line if you add a screenshot]
+<img width="959" height="599" alt="image" src="https://github.com/user-attachments/assets/30639bae-2626-45ce-9624-ade530eca124" />
 
 ## 1. What you need
 
 - **Windows 10 or 11** (this project is built and tested on Windows)
 - **Python 3.11 or newer** — [python.org/downloads](https://www.python.org/downloads/)
 - **Node.js** — [nodejs.org](https://nodejs.org/) (needed to install the AI CLIs below)
-- A subscription to **Claude** (for Claude Code) and/or **ChatGPT Plus/Pro** (for Codex) —
-  you only need one to get started, but you need at least one to watch any games
-
-You do **not** need an API key from Anthropic or OpenAI. This project only uses the CLI tools
-below, signed in with your normal subscription login.
+- A subscription to **Claude** (for Claude Code) and/or **ChatGPT Plus/Pro** (for Codex)
 
 ## 2. Install, step by step
 
