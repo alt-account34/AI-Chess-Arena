@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Watch real AI chess games, follow model responses, and compare results. Try AI Chess Arena's interactive replay demo.">
+<title>AI Chess Arena — Demo</title>
+<link rel="stylesheet" href="static/css/app.css"><link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="index.html">♞ AI Chess Arena</a>
+  <nav aria-label="Main"><a href="index.html" class="active">Choose game</a><a href="record.html">Head-to-head</a></nav>
+  <span class="spacer"></span><a class="star-link" href="https://github.com/jackstroup/AI-Chess-Arena" target="_blank" rel="noopener">☆ Star on GitHub</a>
+</header>
+<main>
+  <form id="form" class="setup panel">
+    <div><span class="demo-label">RECORDED DEMO</span><h2>Watch the models play</h2>
+    <p class="muted">Real games. Original responses. A faster front-row seat.<br>Choose a matchup to watch it unfold, then try AI Chess Arena yourself.</p></div>
+    <div class="row model-row">
+      <label class="field"><span><span class="piece-icon white">♔</span> White</span><select id="white" aria-label="White model"><option value="">All models</option></select></label>
+      <button type="button" id="swap" title="Swap colors" aria-label="Swap colors">⇄</button>
+      <label class="field"><span><span class="piece-icon black">♚</span> Black</span><select id="black" aria-label="Black model"><option value="">All models</option></select></label>
+    </div>
+    <label class="field">Saved game<select id="games" required></select></label>
+    <p id="details" class="muted" aria-live="polite">Loading saved games…</p>
+    <div class="row"><label class="field">Playback speed<select id="speed"><option value="0.5">0.5× · slower</option><option value="1" selected>1× · 2–5 seconds per turn</option><option value="2">2×</option><option value="4">4×</option><option value="8">8×</option></select></label></div>
+    <div class="row"><button class="primary" id="start" disabled>Watch replay →</button><button type="button" id="reset">Show all games</button></div>
+    <p id="error" class="error" role="alert"></p>
+    <span class="help">This demo replays saved games. To run new games or play against a model, <a href="https://github.com/jackstroup/AI-Chess-Arena#2-install-step-by-step" target="_blank" rel="noopener">try it on your computer</a>.</span>
+  </form>
+</main>
+<script type="module" src="picker.js"></script>
+</body></html>

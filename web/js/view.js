@@ -1,6 +1,6 @@
 // Shared rendering for the live and replay pages. The live snapshot and the
 // saved JSON log have the same shape, so one renderer serves both.
-import { Chessground } from '/static/vendor/chessground.min.js';
+import { Chessground } from '../vendor/chessground.min.js';
 
 export const $ = (sel, root = document) => root.querySelector(sel);
 

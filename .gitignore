@@ -16,3 +16,8 @@ tools/stockfish/
 # Local overrides
 *.local.yaml
 .env
+
+# Generated demo site and local browser verification artifacts
+/_site/
+/.demo-preview/
+/.playwright-mcp/

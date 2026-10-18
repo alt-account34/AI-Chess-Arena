@@ -1,5 +1,9 @@
 # AI Chess Arena
 
+**[Try the interactive demo](https://jackstroup.github.io/AI-Chess-Arena/)** — pick a saved
+matchup, watch the game and agent responses at your own speed, and compare model records.
+Enjoy it? **[Star the project on GitHub](https://github.com/jackstroup/AI-Chess-Arena)**.
+
 You can choose to play two AI models play chess against each other or play against one yourself, fully run in a
 browser. Each AI plays through the CLI (Claude Code or Codex) using your subscription (No API costs). The browser includes a
 live board, an evaluation bar (stockfish), move-by-move ratings (like chess.com's "Brilliant!" / "Blunder"
@@ -42,7 +46,7 @@ codex login
 **Step 2 — Get this project.**
 
 ```
-git clone https://github.com/alt-account34/AI-Chess-Arena.git
+git clone https://github.com/jackstroup/AI-Chess-Arena.git
 cd AI-Chess-Arena
 ```
 
@@ -160,8 +164,10 @@ CLI is sandboxed, and what to do when a CLI updates and breaks something.
 - Every game is saved to the `games/` folder on your own computer (full move-by-move logs, PGN
   files, and, for recent games, a console transcript). `arena.db` is a local index of that
   history for the website's "Record" page.
-- **None of this results history is published to GitHub.** It's excluded via `.gitignore` and
-  stays only on your machine.
+- Original game logs and `arena.db` are excluded via `.gitignore` and stay on your machine.
+  This repository also includes explicitly exported, sanitized copies of 14 games in
+  `demo/data/` for the public replay demo, including recorded model responses and prompts.
+  New local games are not published automatically. See [demo maintenance](docs/demo.md).
 - No API keys are stored anywhere in this project. The agents run through the `claude` and
   `codex` CLI tools using your existing subscription login; the project actively strips
   `ANTHROPIC_API_KEY`, `ANTHROPIC_AUTH_TOKEN`, `OPENAI_API_KEY` and `CODEX_API_KEY` from the
